@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+#by necro
+bg="\033[48;5;255m" #white bg
+bk="\e[38;05;232m" #black
+e="\e[0m" #erase
+pi="\e[38;05;201m" #pink
+lb="\e[38;05;81m" #light blue
+bl="\e[38;05;33m" #blue
+gr="\e[38;05;76m" #green
+db="\e[38;05;20m" #dark blue
+ye="\e[38;05;220m" #yellow
+or="\e[38;05;202m" #orange
+
+while true; do
+	clear
+	echo -e "$bg    ${pi} ● 201${bl} ● 33${db} ● 20${or} ● 202     "
+	echo -e "$bg     ${bk}Year in Pixels, 2019$e$bg      "
+	echo -e "       ${lb} ● 81${gr} ● 76${ye} ● 220        "
+	echo -e "$bg$bk    J F M A M J J A S O N D    $e"
+	i=0
+	for ii in {01..31}; do
+		: $((i++))
+		ja=$(cat dados1 | grep "jan" | sed -n $i'p' | awk '{print $3}')
+		col="\e[38;05;${ja}m"
+		jan[$i]=$col
+		#2
+		fv=$(cat dados1 | grep "fev" | sed -n $i'p' | awk '{print $3}')
+		col="\e[38;05;${fv}m"
+		fev[$i]=$col
+		#3
+		mr=$(cat dados1 | grep "mar" | sed -n $i'p' | awk '{print $3}')
+		col="\e[38;05;${mr}m"
+		mar[$i]=$col
+		#4
+		ab=$(cat dados1 | grep "abr" | sed -n $i'p' | awk '{print $3}')
+		col="\e[38;05;${ab}m"
+		abr[$i]=$col
+		#5
+		ma=$(cat dados1 | grep "mai" | sed -n $i'p' | awk '{print $3}')
+		col="\e[38;05;${ma}m"
+		mai[$i]=$col
+		#6
+		ju=$(cat dados1 | grep "jun" | sed -n $i'p' | awk '{print $3}')
+		col="\e[38;05;${ju}m"
+		jun[$i]=$col
+		#7
+		jl=$(cat dados1 | grep "jul" | sed -n $i'p' | awk '{print $3}')
+		col="\e[38;05;${jl}m"
+		jul[$i]=$col
+		#8
+		ag=$(cat dados1 | grep "ago" | sed -n $i'p' | awk '{print $3}')
+		col="\e[38;05;${ag}m"
+		ago[$i]=$col
+		#9
+		se=$(cat dados1 | grep "set" | sed -n $i'p' | awk '{print $3}')
+		col="\e[38;05;${se}m"
+		set[$i]=$col
+		#10
+		ot=$(cat dados1 | grep "out" | sed -n $i'p' | awk '{print $3}')
+		col="\e[38;05;${ot}m"
+		out[$i]=$col
+		#11
+		nv=$(cat dados1 | grep "nov" | sed -n $i'p' | awk '{print $3}')
+		col="\e[38;05;${nv}m"
+		nov[$i]=$col
+		#12
+		dz=$(cat dados1 | grep "dez" | sed -n $i'p' | awk '{print $3}')
+		col="\e[38;05;${dz}m"
+		dez[$i]=$col
+		echo -e "$bg$bk$ii. ${jan[$i]}█$e$bg ${fev[$i]}█$e$bg ${mar[$i]}█$e$bg ${abr[$i]}█$e$bg ${mai[$i]}█$e$bg ${jun[$i]}█$e$bg ${jul[$i]}█$e$bg ${ago[$i]}█$e$bg ${set[$i]}█$e$bg ${out[$i]}█$e$bg ${nov[$i]}█$e$bg ${dez[$i]}█$e$bg    "
+
+
+	done
+	echo -e "$bg                               "
+	echo -e "${bk}O que deseja fazer?            "
+	echo -e "$bg                               "
+	echo -e "1. Como funciona               \n2. Editar                      \n0. Sair...                     "
+	echo -e "$bg                               $e\n"
+	read -p "Digite aqui: " input;
+	echo -e "$e"
+	case $input in
+		1)
+			clear
+			echo -e "$bg                               "
+			echo -e "${bk} Escolha uma cor, cada cor     \n representa o maior sentimento \n que você teve no dia.         "
+			echo -e "$bg                               "
+			echo -e "$bg${pi} ⬤ 201 ${bk}Amazing, fantastic day. "
+			echo -e "${lb} ⬤ 81 ${bk}Really good, happy day.  "
+			echo -e "${bl} ⬤ 33 ${bk}Normal, average day.     "
+			echo -e "${gr} ⬤ 76 ${bk}Exhausted, tired day.    "
+			echo -e "${db} ⬤ 20 ${bk}Depressed, sad day.      "
+			echo -e "${ye} ⬤ 220 ${bk}Frustrated, angry day.  "
+			echo -e "${or} ⬤ 202 ${bk}Stressed-out, frantic.  "
+			echo -e "$bg                               "
+			echo -e $e
+			read -p "Continuar..." c;
+			;;
+		2)
+			clear
+			read -p "Quer editar qual mês? (jan/fev/etc...) " i;
+			editando=$(cat -n dados1 | grep "$i")
+			echo "Editando:"
+			echo $editando
+			echo -e "\n"
+			read -p "Quer editar qual dia? " d;
+			echo -e "$bg                               "
+			echo -e "$bg${pi} ⬤ 201 ${bk}Amazing, fantastic day. "
+			echo -e "${lb} ⬤ 81 ${bk}Really good, happy day.  "
+			echo -e "${bl} ⬤ 33 ${bk}Normal, average day.     "
+			echo -e "${gr} ⬤ 76 ${bk}Exhausted, tired day.    "
+			echo -e "${db} ⬤ 20 ${bk}Depressed, sad day.      "
+			echo -e "${ye} ⬤ 220 ${bk}Frustrated, angry day.  "
+			echo -e "${or} ⬤ 202 ${bk}Stressed-out, frantic.  "
+			echo -e "$bg                               "
+			echo -e $e
+			read -p "O que voce esta sentido? " c;
+			sed -i $d's/.*/'$i' - '$c'/' dados1
+			echo "editar"
+			;;
+		0)
+			echo "Saindo."
+			break
+			;;
+	esac
+done
+exit

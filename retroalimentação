@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+rm dados1
+a=245
+for i in {1..31}; do
+printf "jan - $a\n" >> dados1;
+done
+for i in {1..28}; do
+printf "fev - $a\n" >> dados1;
+done
+ for i in {1..31}; do
+printf "mar - $a\n" >> dados1;
+done
+ for i in {1..30}; do
+printf "abr - $a\n" >> dados1;
+done
+ for i in {1..31}; do
+printf "mai - $a\n" >> dados1;
+done
+ for i in {1..30}; do
+printf "jun - $a\n" >> dados1;
+done
+ for i in {1..31}; do
+printf "jul - $a\n" >> dados1;
+done
+ for i in {1..31}; do
+printf "ago - $a\n" >> dados1;
+done
+ for i in {1..30}; do
+printf "set - $a\n" >> dados1;
+done
+ for i in {1..31}; do
+printf "out - $a\n" >> dados1;
+done
+ for i in {1..30}; do
+printf "nov - $a\n" >> dados1;
+done
+ for i in {1..31}; do
+printf "dez - $a\n" >> dados1;
+done
+exit

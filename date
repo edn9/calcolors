@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+for m in {1..12}; do
+  date -d "$m/1 + 1 month - 1 day" "+%b - %d days";
+done
